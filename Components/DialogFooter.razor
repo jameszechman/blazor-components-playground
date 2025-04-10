@@ -1,0 +1,11 @@
+﻿<footer class="modal__footer">
+          @ChildContent
+</footer>
+
+@code {
+    [CascadingParameter(Name = "Id")]
+    public string? Id { get; set; } // Unique identifier for the modal, used for accessibility and JavaScript interactions
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; } // Content to be displayed inside the modal
+}

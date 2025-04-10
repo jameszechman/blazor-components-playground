@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "dev",
+      "path": "wwwroot/lib",
+      "problemMatcher": [],
+      "label": "Larsa.Blazor.JS Dev",
+      "detail": "vite"
+    },
+    {
+      "type": "npm",
+      "script": "build",
+      "path": "wwwroot/lib",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "Larsa.Blazor.JS Build",
+      "detail": "vite build"
+    }
+  ]
+}

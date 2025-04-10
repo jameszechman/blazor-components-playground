@@ -1,7 +1,7 @@
 ﻿<div class="accordion-item -wrapper" aria-expanded="@IsExpanded.ToString().ToLower()" id=@Id>
     <CascadingValue Name="Id" Value=@Id>
         <CascadingValue Name="IsExpanded" Value=@IsExpanded>
-            <CascadingValue Name="parent" Value=this>
+            <CascadingValue Name="Parent" Value=this>
                     @ChildContent
             </CascadingValue>
         </CascadingValue>

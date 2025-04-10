@@ -1,0 +1,27 @@
+﻿<header class="modal__header">
+    @if (Template != null)
+    {
+        @Template
+    }
+    else if (!string.IsNullOrEmpty(Title))
+    {
+        <h2 class="modal__title" id="@Id-title">
+            @Title
+        </h2>
+    }
+    @ChildContent
+</header>
+
+@code {
+    [CascadingParameter(Name = "Id")]
+    public string? Id { get; set; } // Unique identifier for the modal, used for accessibility and JavaScript interactions
+
+    [Parameter]
+    public string? Title { get; set; } = "Modal Title"; // Default title for the modal
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; } // Content to be displayed inside the modal
+
+    [Parameter] // Template
+    public RenderFragment? Template { get; set; } // Template for the modal content, if provided
+}

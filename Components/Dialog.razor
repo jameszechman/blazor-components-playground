@@ -1,0 +1,7 @@
+﻿@inject IJSRuntime JSRuntime
+
+<CascadingValue Name="Id" Value=@Id>
+    <CascadingValue Name="Parent" Value=this>
+        @ChildContent
+    </CascadingValue>
+</CascadingValue>

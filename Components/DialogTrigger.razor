@@ -1,7 +1,7 @@
 ﻿@inject IJSRuntime JSRuntime // Injecting JavaScript runtime for interop calls
 
 
-<div @onclick="() => OpenModal()">
+<div @onclick="() => Parent.OpenModal()">
     @ChildContent
 </div>
 
@@ -10,14 +10,10 @@
     [CascadingParameter(Name = "Id")]
     public string? Id { get; set; } // Unique identifier for the modal, used for accessibility and JavaScript interactions
 
+    [CascadingParameter(Name = "Parent")]
+    public Dialog? Parent { get; set; } // Reference to the parent dialog component
+
     [Parameter]
     public RenderFragment? ChildContent { get; set; } // Content to be displayed inside the modal
-
-    public void OpenModal()
-    {
-        @* IsOpen = true; *@
-        JSRuntime.InvokeVoidAsync("MicroModal.show", Id, new { disableScroll = true, disableFocus = true });
-        @* OnOpen.InvokeAsync(IsOpen); *@
-    }
 
 }

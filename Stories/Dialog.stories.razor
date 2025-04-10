@@ -7,41 +7,46 @@
     <Story Name="Default">
 
         <Arguments>
-            <Arg For="_ => _.Title" Value='"Modal Title"' />
-            @* <Arg For="_ => _.(Property)" Value='"(Value)"' /> *@
+            @* <Arg For="_ => _.Title" Value='"Modal Title"' /> *@
         </Arguments>
 
         <Template>
             <Button @onclick="() => _modalRef.OpenModal()" Text="Open Modal" />
-            <Dialog @ref="_modalRef">
+            <Dialog @ref="_modalRef" OnOpen="HandleDialogOpen" OnClose="HandleDialogClose">
                 <DialogTrigger>Internal Trigger</DialogTrigger>
-                <DialogContent @attributes ="context.Args">
+                <DialogContainer @attributes ="context.Args">
+                    <DialogHeader Title="Modal Title">
+                        <DialogCloseButton />
+                    </DialogHeader>
+                    <DialogContent>
                     <p>
                         Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself. Also, <code>esc</code> to close modal.
                     </p>
-                </DialogContent>
+                    </DialogContent>
+                    <DialogFooter>
+                        <button class="modal__btn modal__btn-primary">Continue</button>
+                        <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+                    </DialogFooter>
+                </DialogContainer>
             </Dialog>
 
             @code {
-                private Dialog _modalRef = new Dialog(); // Create a new instance of the Dialog component
+                private Dialog _modalRef;
 
+                private Task HandleDialogOpen(bool isOpen)
+                {
+                    Console.WriteLine($"Dialog opened. IsOpen: {isOpen}");
+                    return Task.CompletedTask;
+                }
+
+                private Task HandleDialogClose(bool isOpen)
+                {
+                    Console.WriteLine($"Dialog closed. IsOpen: {isOpen}");
+                    return Task.CompletedTask;
+                }
             }
+
         </Template>
 
     </Story>
-
-    @*
-    <Story Name="(Another story name)">
-
-        <Arguments>
-            <Arg For="_ => _.(Property)" Value='"(Value)"' /> 
-        </Arguments >
-
-        <Template>
-            <Dialog @attributes ="context.Args">
-            </Dialog>
-        </Template>
-
-    </Story>
-    *@
 </Stories>
