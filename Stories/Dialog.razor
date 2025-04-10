@@ -1,32 +1,14 @@
-﻿  @inject IJSRuntime JSRuntime
-  
-  <div class="modal micromodal-slide" id=@Id aria-hidden="true">
-    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="@Id-title">
-        <header class="modal__header">
-          <h2 class="modal__title" id="@Id-title">
-            @Title
-          </h2>
-          <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-        </header>
-        <main class="modal__content" id="@Id-content">
-          @ChildContent
-        </main>
-        <footer class="modal__footer">
-          <button class="modal__btn modal__btn-primary">Continue</button>
-          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
-        </footer>
-      </div>
-    </div>
-  </div>
+﻿@inject IJSRuntime JSRuntime
+
+<CascadingValue Name="Id" Value=@Id>
+    @ChildContent
+</CascadingValue>
 
 @code {
 
     [Parameter]
     public string? Id { get; set; } = Random.Shared.NextSingle().ToString("N");
 
-    [Parameter]
-    public string? Title { get; set; }
 
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
@@ -48,5 +30,11 @@
         IsOpen = true;
         JSRuntime.InvokeVoidAsync("MicroModal.show", Id, new { disableScroll = true, disableFocus = true });
         OnOpen.InvokeAsync(IsOpen);
+    }
+    public void CloseModal()
+    {
+        IsOpen = false;
+        JSRuntime.InvokeVoidAsync("MicroModal.close", Id);
+        OnClose.InvokeAsync(IsOpen);
     }
 }
