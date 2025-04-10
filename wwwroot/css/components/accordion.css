@@ -1,0 +1,75 @@
+/* Accordion Wrapper */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+}
+
+/* Accordion Item Wrapper */
+.accordion-item.-wrapper {
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-item.-wrapper:last-child {
+  border-bottom: none;
+}
+
+/* Accordion Trigger */
+.accordion-item.-trigger {
+  padding: 1rem;
+  background-color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-item.-trigger:hover {
+  background-color: #f0f0f0;
+}
+
+.accordion-item.-trigger:focus {
+  outline: 2px solid #0078d4;
+  outline-offset: 2px;
+}
+
+/* Accordion Content */
+.accordion-item.-content {
+  padding: 1rem;
+  background-color: #fff;
+  display: none;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+/* Expanded Accordion Content */
+.accordion-item.-wrapper[aria-expanded="true"] .accordion-item.-content {
+  display: block;
+  opacity: 1;
+}
+
+/* Smooth Transition for Content */
+.accordion-item.-content {
+  max-height: 0;
+  opacity: 0;
+}
+
+.accordion-item.-wrapper[aria-expanded="true"] .accordion-item.-content {
+  max-height: 500px; /* Adjust based on content size */
+  opacity: 1;
+}
+
+/* Accessibility */
+.accordion-item.-trigger:focus-visible {
+  outline: 2px solid #0078d4;
+  outline-offset: 2px;
+}

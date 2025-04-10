@@ -1,0 +1,14 @@
+﻿<div class="accordion-item -content">
+    @ChildContent
+</div>
+
+@code {
+    [CascadingParameter(Name = "Id")]
+    public string? Id { get; set; } // Unique identifier for the accordion item, used for accessibility and JavaScript interactions
+
+    [CascadingParameter(Name = "IsExpanded")]
+    public bool IsExpanded { get; set; } // Indicates whether the accordion item is expanded or collapsed
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; } // Content to be displayed inside the accordion item
+}

@@ -1,0 +1,31 @@
+﻿<div class="accordion-item -wrapper" aria-expanded="@IsExpanded.ToString().ToLower()" id=@Id>
+    <CascadingValue Name="Id" Value=@Id>
+        <CascadingValue Name="IsExpanded" Value=@IsExpanded>
+            <CascadingValue Name="parent" Value=this>
+                    @ChildContent
+            </CascadingValue>
+        </CascadingValue>
+    </CascadingValue>
+</div>
+
+@code {
+    [Parameter]
+    public string? Id { get; set; } = Random.Shared.NextSingle().ToString("N");
+    [Parameter]
+    public bool IsExpanded { get; set; } = false;
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    public void ToggleAccordion()
+    {
+        IsExpanded = !IsExpanded;
+    }
+    public void OpenAccordion()
+    {
+        IsExpanded = true;
+    }
+    public void CloseAccordion()
+    {
+        IsExpanded = false;
+    }
+}

@@ -1,0 +1,46 @@
+@attribute [Stories("Components/Accordion")]
+
+<Stories TComponent="Accordion">
+
+    @* <ArgType For="_ => _.(Property)" Control="ControlType.(Control Type)" /> *@
+
+    <Story Name="Default">
+
+        <Arguments>
+            @* <Arg For="_ => _.(Property)" Value='"(Value)"' /> *@
+        </Arguments>
+
+        <Template>
+            <Accordion @attributes ="context.Args">
+                <AccordionItem Id="item1" IsExpanded="true">
+                    <AccordionItemTrigger>Item 1</AccordionItemTrigger>
+                    <AccordionItemContent>Content 1</AccordionItemContent>
+                </AccordionItem>
+                <AccordionItem Id="item2">
+                    <AccordionItemTrigger>Item 2</AccordionItemTrigger>
+                    <AccordionItemContent>Content 2</AccordionItemContent>
+                </AccordionItem>
+                <AccordionItem Id="item3">
+                    <AccordionItemTrigger>Item 3</AccordionItemTrigger>
+                    <AccordionItemContent>Content 3</AccordionItemContent>
+                </AccordionItem>
+            </Accordion>
+        </Template>
+
+    </Story>
+
+    @*
+    <Story Name="(Another story name)">
+
+        <Arguments>
+            <Arg For="_ => _.(Property)" Value='"(Value)"' /> 
+        </Arguments >
+
+        <Template>
+            <Accordion @attributes ="context.Args">
+            </Accordion>
+        </Template>
+
+    </Story>
+    *@
+</Stories>
