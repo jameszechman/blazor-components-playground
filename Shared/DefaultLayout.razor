@@ -1,0 +1,14 @@
+@inherits LayoutComponentBase
+@inject IJSRuntime JSRuntime
+@* See also: https://github.com/jsakamoto/BlazingStory#%EF%B8%8F-configure-layouts *@
+@Body
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("LarsaComponents.initMicroModal");
+        }
+    }
+}

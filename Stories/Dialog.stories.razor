@@ -1,0 +1,44 @@
+@attribute [Stories("Components/Dialog")]
+
+<Stories TComponent="Dialog">
+
+    @* <ArgType For="_ => _.(Property)" Control="ControlType.(Control Type)" /> *@
+
+    <Story Name="(Another story name)">
+
+        <Arguments>
+            <Arg For="_ => _.Title" Value='"Modal Title"' />
+            @* <Arg For="_ => _.(Property)" Value='"(Value)"' /> *@
+        </Arguments>
+
+        <Template>
+            <Button @onclick="() => _modalRef.OpenModal()" Text="Open Modal" />
+            <Dialog @attributes ="context.Args" @ref="_modalRef">
+                <p>
+                    Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself. Also, <code>esc</code> to close modal.
+                </p>
+            </Dialog>
+
+            @code {
+                private Dialog _modalRef = new Dialog(); // Create a new instance of the Dialog component
+
+            }
+        </Template>
+
+    </Story>
+
+    @*
+    <Story Name="(Another story name)">
+
+        <Arguments>
+            <Arg For="_ => _.(Property)" Value='"(Value)"' /> 
+        </Arguments >
+
+        <Template>
+            <Dialog @attributes ="context.Args">
+            </Dialog>
+        </Template>
+
+    </Story>
+    *@
+</Stories>
